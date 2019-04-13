@@ -1,0 +1,5 @@
+*.config.js
+node_modules/
+*.json
+.DS_Store
+.eslintrc
