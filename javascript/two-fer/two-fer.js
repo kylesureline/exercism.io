@@ -1,6 +1,3 @@
-export const twoFer = (x) => {
-  if(x) {
-    return `One for ${x}, one for me.`;
-  }
-  return 'One for you, one for me.';
+export const twoFer = (x = 'you') => {
+  return `One for ${x}, one for me.`;
 };
