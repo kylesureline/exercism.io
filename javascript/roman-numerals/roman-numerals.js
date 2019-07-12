@@ -1,15 +1,15 @@
 export const toRoman = (number) => {
 
-  function countRemainderOf(romanLetter) {
+  const countRemainderOf = (romanLetter) => {
     let remainder = number % romanLetter;
     let res = (number - remainder) / romanLetter;
     number -= res * romanLetter;
     return res;
   }
 
-  function ninesFormatter(fives, ones, tenChar, fiveChar, oneChar) {
+  const ninesFormatter = (fives, ones, tenChar, fiveChar, oneChar) => {
 
-    function onesFormatter(ones, oneChar) {
+    const onesFormatter = (ones, oneChar) => {
       let onesStr = '';
       for(let index = 0; index < ones; index += 1) {
         onesStr += oneChar;
