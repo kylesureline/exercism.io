@@ -1,12 +1,4 @@
 export const gigasecond = (date) => {
-  return new Date(
-    Date.UTC(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getUTCDate(),
-      date.getUTCHours(),
-      date.getMinutes(),
-      date.getSeconds()
-    ) + 1000000000000
-  );
+  const GIGASECOND_IN_MS = 10 ** 12;
+  return new Date(date.getTime() + GIGASECOND_IN_MS);
 };
