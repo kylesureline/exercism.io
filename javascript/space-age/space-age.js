@@ -10,5 +10,5 @@ export const age = (planet, seconds) => {
     'uranus': earth * 84.016846,
     'neptune': earth * 164.79132
   }
-  return (Math.round((seconds / planets[planet]) * 100))/100;
+  return Number((seconds / planets[planet]).toFixed(2));
 };
