@@ -1,6 +1,6 @@
 export const age = (planet, seconds) => {
   const earth = 31557600;
-  const planets = {
+  const ORBIT_in_SECONDS = {
     earth,
     'mercury': earth * 0.2408467,
     'venus': earth * 0.61519726,
@@ -10,5 +10,5 @@ export const age = (planet, seconds) => {
     'uranus': earth * 84.016846,
     'neptune': earth * 164.79132
   }
-  return Number((seconds / planets[planet]).toFixed(2));
+  return Number((seconds / ORBIT_in_SECONDS[planet]).toFixed(2));
 };
