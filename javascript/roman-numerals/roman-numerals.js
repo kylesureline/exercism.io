@@ -35,24 +35,63 @@ export const toRoman = (number) => {
     return str;
   }
 
-  let m = countRemainderOf(1000);
-  let d = countRemainderOf(500);
-  let c = countRemainderOf(100);
-  let l = countRemainderOf(50);
-  let x = countRemainderOf(10);
-  let v = countRemainderOf(5);
-  let i = countRemainderOf(1);
+  const letterMap = [
+    {
+      letter: 'M',
+      value: 1000,
+      count: 0
+    },
+    {
+      letter: 'D',
+      value: 500,
+      count: 0
+    },
+    {
+      letter: 'C',
+      value: 100,
+      count: 0
+    },
+    {
+      letter: 'L',
+      value: 50,
+      count: 0
+    },
+    {
+      letter: 'X',
+      value: 10,
+      count: 0
+    },
+    {
+      letter: 'V',
+      value: 5,
+      count: 0
+    },
+    {
+      letter: 'I',
+      value: 1,
+      count: 0
+    }
+  ].map((letter) => {
+    return {
+      ...letter,
+      count: countRemainderOf(letter.value)
+    };
+  });
 
   let romanNumeral = '';
 
-  for(let mi = 0; mi < m; mi += 1) {
-    romanNumeral += 'M';
+  for(let mi = 0; mi < letterMap[0].count; mi += 1) {
+    romanNumeral += letterMap[0].letter;
+  }
+  for(let i = 1; i < letterMap.length; i+=2) {
+    romanNumeral += ninesFormatter(
+      letterMap[i].count,
+      letterMap[i + 1].count,
+      letterMap[i - 1].letter,
+      letterMap[i].letter,
+      letterMap[i + 1].letter
+    );
   }
 
-  romanNumeral += ninesFormatter(d, c, 'M', 'D', 'C');
-  romanNumeral += ninesFormatter(l, x, 'C', 'L', 'X');
-  romanNumeral += ninesFormatter(v, i, 'X', 'V', 'I');
-
   return romanNumeral;
-
 };
