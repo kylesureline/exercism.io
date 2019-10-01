@@ -1,27 +1,29 @@
-const romanNumerals = [
-  { value: 1000, numeral: 'M'},
-  { value: 900, numeral: 'CM'},
-  { value: 500, numeral: 'D'},
-  { value: 400, numeral: 'CD'},
-  { value: 100, numeral: 'C'},
-  { value: 90, numeral: 'XC'},
-  { value: 50, numeral: 'L'},
-  { value: 40, numeral: 'XL'},
-  { value: 10, numeral: 'X'},
-  { value: 9, numeral: 'IX'},
-  { value: 5, numeral: 'V'},
-  { value: 4, numeral: 'IV'},
-  { value: 1, numeral: 'I'}
-];
+const romanNumerals = new Map(
+  [
+    [1000, 'M'],
+    [900, 'CM'],
+    [500, 'D'],
+    [400, 'CD'],
+    [100, 'C'],
+    [90, 'XC'],
+    [50, 'L'],
+    [40, 'XL'],
+    [10, 'X'],
+    [9, 'IX'],
+    [5, 'V'],
+    [4, 'IV'],
+    [1, 'I']
+  ]
+);
 
 export const toRoman = (number) => {
 
   let romanNumeral = '';
 
-  romanNumerals.forEach(({value, numeral}) => {
-    while(number >= value) {
-      romanNumeral += numeral;
-      number -= value;
+  romanNumerals.forEach((value, key) => {
+    while(number >= key) {
+      romanNumeral += value;
+      number -= key;
     }
   });
 
