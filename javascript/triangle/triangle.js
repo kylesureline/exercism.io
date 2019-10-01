@@ -21,9 +21,9 @@ export class Triangle {
     const sides = [this.side1, this.side2, this.side3];
 
     let matchCount = 0;
-    for(let i = 0; i < sides.length; i++) {
+    for(let i = 0; i < sides.length - 1; i++) {
       let count = sides.filter((side) => side === sides[i]).length;
-      if(matchCount < count) {
+      if(matchCount < count && count > 1) {
         matchCount = count;
       }
     }
@@ -36,8 +36,9 @@ export class Triangle {
         return 'equilateral';
       } else if(this.matchingSideCount() === 2) {
         return 'isosceles';
+      } else if(this.matchingSideCount() === 0) {
+        return 'scalene';
       }
-      return 'scalene';
     } else {
       throw new Error('not a triangle');
     }
