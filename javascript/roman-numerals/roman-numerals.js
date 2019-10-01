@@ -17,15 +17,14 @@ const romanNumerals = new Map(
 );
 
 export const toRoman = (number) => {
-
   let romanNumeral = '';
 
-  romanNumerals.forEach((value, key) => {
+  for(let [key, value] of romanNumerals) {
     while(number >= key) {
       romanNumeral += value;
       number -= key;
     }
-  });
+  }
 
   return romanNumeral;
 };
