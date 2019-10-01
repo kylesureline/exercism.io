@@ -34,7 +34,7 @@ export class Triangle {
     if(this.isValid()) {
       if(this.matchingSideCount() === 3) {
         return 'equilateral';
-      } else if(side1 === side2 || side1 === side3 || side2 === side3) {
+      } else if(this.matchingSideCount() === 2) {
         return 'isosceles';
       }
       return 'scalene';
