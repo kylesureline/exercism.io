@@ -30,7 +30,7 @@ export class Triangle {
     return matchCount;
   }
 
-  kind(side1 = this.side1, side2 = this.side2, side3 = this.side3) {
+  kind() {
     if(this.isValid()) {
       if(this.matchingSideCount() === 3) {
         return 'equilateral';
