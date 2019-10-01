@@ -5,16 +5,34 @@ export class Triangle {
     this.side3 = side3;
   }
 
-  isTriangle(side1 = this.side1, side2 = this.side2, side3 = this.side3) {
-    const sidesAreGreaterThanZero = [side1, side2, side3].every((side) => side > 0);
-    const twoSidesGreaterThanThird = (() => (side1 + side2 >= side3) && (side1 + side3 >= side2) && (side2 + side3 >= side1))();
+  sidesAreGreaterThanZero() {
+    return [this.side1, this.side2, this.side3].every((side) => side > 0);
+  }
 
-    return sidesAreGreaterThanZero && twoSidesGreaterThanThird;
+  twoSidesGreaterThanThird() {
+    return (this.side1 + this.side2 >= this.side3) && (this.side1 + this.side3 >= this.side2) && (this.side2 + this.side3 >= this.side1);
+  }
+
+  isValid() {
+    return this.sidesAreGreaterThanZero() && this.twoSidesGreaterThanThird();
+  }
+
+  matchingSideCount() {
+    const sides = [this.side1, this.side2, this.side3];
+
+    let matchCount = 0;
+    for(let i = 0; i < sides.length; i++) {
+      let count = sides.filter((side) => side === sides[i]).length;
+      if(matchCount < count) {
+        matchCount = count;
+      }
+    }
+    return matchCount;
   }
 
   kind(side1 = this.side1, side2 = this.side2, side3 = this.side3) {
-    if(this.isTriangle()) {
-      if(side1 === side2 && side1 === side3) {
+    if(this.isValid()) {
+      if(this.matchingSideCount() === 3) {
         return 'equilateral';
       } else if(side1 === side2 || side1 === side3 || side2 === side3) {
         return 'isosceles';
